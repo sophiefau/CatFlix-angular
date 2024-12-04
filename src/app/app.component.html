@@ -1,6 +1,6 @@
 <div class="main-page">
   <h1>
-    Welcome to myFlix!
+    Welcome to CatFlix!
   </h1>
   <button
     mat-raised-button
@@ -12,8 +12,17 @@
   </button>
   <button
     mat-raised-button
+    (click)="openUserLoginDialog()"
+    style="margin-right: 10px;"
     color="primary"
   >
     Login
   </button>
+  <!-- <button
+    mat-raised-button
+    color="primary"
+    (click)="openMoviesDialog()"
+  >
+    All Movies
+  </button> -->
 </div>
