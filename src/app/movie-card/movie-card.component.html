@@ -16,7 +16,8 @@
     <button mat-button color="primary" (click)="openMovieDialog(movie)">View Details</button>
     <button mat-button color="accent" (click)="openCatDialog(movie.Cat)">About the cat</button>
     <button mat-button color="warn" (click)="openGenreDialog(movie.Genre)">Genre: {{ movie.Genre.Name }}</button>
-      
+    <button mat-raised-button (click)="addToFavorites(movie._id)">Add to Favorites</button>
+     
     </mat-card-content>
 </mat-card>
 </div>

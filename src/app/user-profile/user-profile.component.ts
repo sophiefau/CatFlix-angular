@@ -4,6 +4,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
+// Import components
+import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -32,6 +35,13 @@ export class UserProfileComponent implements OnInit {
       console.log(this.userData);
     });
   }
+
+  // // Edit profile
+  // openEditDialog(userData: any): void {
+  //   this.dialog.open(ProfileEditComponent, {
+  //     data: { userData }
+  //   });
+  // }
 
         // Navigation
         movieCard(): void {

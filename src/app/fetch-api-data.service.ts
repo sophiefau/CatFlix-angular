@@ -128,27 +128,30 @@ public userLogin(userDetails: any): Observable<any> {
 }
 
     // Add a movie to favorite Movies
-    public addUserFavoriteMovie(username: string, movieId: string) {
+    public addFavoriteMovie(movieId: string) {
       const token = this.getToken();
-      return this.http.post(apiUrl + 'users/' + username + movieId, {
-        headers: new HttpHeaders(
-          {
-            Authorization: 'Bearer ' + token,
-          })
-      }).pipe(
-        catchError(this.handleError)
-      );
+      const username = localStorage.getItem('user');
+      console.log(username, movieId, token);
+
+      const headers = new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      });
+
+       return this.http.post(apiUrl + 'users/' + username + '/' + movieId, {}, { headers }).pipe(
+    catchError(this.handleError)
+  );
     }
   
  // Delete a movie from favorite Movies
- public deleteUserFavoriteMovie(username: string, movieId: string) {
+public deleteFavoriteMovie(movieId: string) {
   const token = this.getToken();
-  return this.http.delete(apiUrl + 'users/' + username + movieId, {
-    headers: new HttpHeaders(
-      {
-        Authorization: 'Bearer ' + token,
-      })
-  }).pipe(
+  const username = localStorage.getItem('user');
+
+  const headers = new HttpHeaders({
+    Authorization: 'Bearer ' + token
+  });
+
+  return this.http.delete(apiUrl + 'users/' + username + '/' + movieId, { headers }).pipe(
     catchError(this.handleError)
   );
 }

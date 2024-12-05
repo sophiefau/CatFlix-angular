@@ -32,19 +32,7 @@ ngOnInit(): void {
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      return this.movies;
     });
-  }
-
-  // Navigation
-  userProfile(): void {
-      this.router.navigate(['profile']);
-  }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.router.navigate(['welcome']);
   }
 
   // Open the dialogs
@@ -65,4 +53,27 @@ getMovies(): void {
       data: { genre }
     });
   }
+
+  // Add movie to favorites
+  addToFavorites(movieId: string): void {
+      this.fetchApiData.addFavoriteMovie(movieId).subscribe({
+        next: (res: any) => {
+          console.log('Movie added to favorites:', res);
+        },
+        error: (err: any) => {
+          console.error('Error adding movie to favorites:', err);
+        }
+      });
+  }
+
+    // Navigation
+    userProfile(): void {
+      this.router.navigate(['profile']);
+  }
+
+logout(): void {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  this.router.navigate(['welcome']);
+}
 }
