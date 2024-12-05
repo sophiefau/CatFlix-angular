@@ -131,7 +131,6 @@ public userLogin(userDetails: any): Observable<any> {
     public addFavoriteMovie(movieId: string) {
       const token = this.getToken();
       const username = localStorage.getItem('user');
-      console.log(username, movieId, token);
 
       const headers = new HttpHeaders({
         Authorization: 'Bearer ' + token

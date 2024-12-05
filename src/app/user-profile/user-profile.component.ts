@@ -32,9 +32,20 @@ export class UserProfileComponent implements OnInit {
     const username = localStorage.getItem('user')!;  
     this.fetchApiData.getUser(username).subscribe((resp: any) => {
       this.userData = resp;
-      console.log(this.userData);
+      this.getfavoriteMovies();
     });
   }
+
+  getfavoriteMovies(): void {
+    this.fetchApiData.getAllMovies().subscribe((res: any) => {
+      this.favoriteMovies = res.filter((movie: any) => {
+        return this.userData.FavoriteMovies.includes(movie._id)
+      })
+    }, (err: any) => {
+      console.error(err);
+    });
+  }
+
 
   // // Edit profile
   // openEditDialog(userData: any): void {

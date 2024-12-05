@@ -7,21 +7,26 @@
 <div>
 <mat-card *ngIf="userData">
   <mat-card-header>
-    <mat-card-title>{{ userData.Username }}'s Profile</mat-card-title>
+    <mat-card-title>Your profile</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <p>Username: {{ userData.Username }}</p>
     <p>Email: {{ userData.Email }}</p>
     <p>Birthday: {{ userData.Birthday | date }}</p>
 
     <!-- <button mat-raised-button (click)="openEditDialog()">Edit Profile</button> -->
-
-    <p>Favorite Movies: </p>
-      <ul>
-        <li *ngFor="let movie of userData.FavoriteMovies">{{ movie.Title }}</li>
-      </ul>
-    
-    
   </mat-card-content>
+  <mat-card-title>Favorite Movies</mat-card-title>
+  <mat-card *ngFor="let movie of this.favoriteMovies;">
+  <mat-card-header>
+    <mat-card-title>{{ movie.Title }}</mat-card-title>
+    <mat-card-content>
+      <img [src]="movie.Img" alt="{{ movie.Title }}" />
+    </mat-card-content>
+  </mat-card-header>
+  </mat-card>
+
+
 </mat-card>
 </div>
 </div>
