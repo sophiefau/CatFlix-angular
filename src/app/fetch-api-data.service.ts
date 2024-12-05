@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
@@ -19,20 +19,28 @@ export class FetchApiDataService {
     return localStorage.getItem('token') || '';
   }
 
- // Making the api call for the user registration endpoint
-  public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    return this.http.post(apiUrl + 'signup', userDetails).pipe(
+ // User registration
+public userRegistration(userDetails: any): Observable<any> {
+  return this.http.post(apiUrl + 'signup', userDetails).pipe(
+    tap((response: any) => {
+      // Save username to localStorage
+      localStorage.setItem('user', userDetails.Username); 
+    }),
     catchError(this.handleError)
-    );
-  }
+  );
+}
 
-    // User login
-  public userLogin(userDetails: any): Observable<any> {
-    return this.http.post(apiUrl + 'login', userDetails).pipe(
-      catchError(this.handleError)
-    );
-  }
+   // User login
+public userLogin(userDetails: any): Observable<any> {
+  return this.http.post(apiUrl + 'login', userDetails).pipe(
+    tap((response: any) => {
+      // Save token and username to localStorage
+      localStorage.setItem('token', response.token); 
+      localStorage.setItem('user', response.user.Username); 
+    }),
+    catchError(this.handleError)
+  );
+}
 
   // Get all movies
   public getAllMovies(): Observable<any> {
@@ -89,7 +97,7 @@ export class FetchApiDataService {
   // Get genre
   public getGenre(name: string) {
     const token = this.getToken();
-    return this.http.get(apiUrl + 'genres' + name, {
+    return this.http.get(apiUrl + 'genres/' + name, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -99,18 +107,25 @@ export class FetchApiDataService {
     );
   }
 
-  // Get all users
-  public getAllUsers() {
+  // Get a user
+  public getUser(username: string) {
     const token = this.getToken();
-    return this.http.get(apiUrl + 'users', {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get(apiUrl + 'users/' + username, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      })
+    }).pipe(catchError(this.handleError));
   }
+
+ // Update user
+ public updateUserProfile(username: string, userData: any) {
+  const token = this.getToken();
+  return this.http.patch(apiUrl + 'users/' + username, userData, {
+    headers: new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    })
+  }).pipe(catchError(this.handleError));
+}
 
     // Add a movie to favorite Movies
     public addUserFavoriteMovie(username: string, movieId: string) {
@@ -132,20 +147,6 @@ export class FetchApiDataService {
     headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
-      })
-  }).pipe(
-    catchError(this.handleError)
-  );
-}
-
- // Edit user
- public editUser(username: string): Observable<any> {
-  const token = this.getToken();
-  return this.http.patch(apiUrl + 'users/' + username, {
-    headers: new HttpHeaders(
-      {
-        "Content-Type": "application/json",
-        Authorization: 'Bearer ' + token
       })
   }).pipe(
     catchError(this.handleError)

@@ -1,3 +1,4 @@
+// src/app/user-login-form/user-login-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -26,7 +27,6 @@ export class UserLoginFormComponent implements OnInit {
     loginUser(): void {
       this.fetchApiData.userLogin(this.userData).subscribe(
         (result) => {
-          console.log(result);
           this.dialogRef.close();
           this.snackBar.open('Login successful', 'OK', {
             duration: 2000,
