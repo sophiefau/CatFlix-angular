@@ -1,10 +1,11 @@
 <!-- src/app/movie-card/movie-details.component.html -->
-<h2 mat-dialog-title>{{ movieDetails.Title }}</h2>
+<div class="dialog-title"><h2 mat-dialog-title class="h2">{{ movieDetails.Title }}</h2></div>
+<div class="movie-img-dialog-container"> <img [src]="movieDetails.Img" alt="{{ movie.Title }}" class="movie-img-dialog"/></div>
 <mat-dialog-content>
-  <p>Director: {{ movieDetails.Director }}</p>
-  <p>Synopsis: {{ movieDetails.Synopsis }}</p>
-  <p>Year: {{ movieDetails.Year }}</p>
-  <p>Country: {{ movieDetails.Country }}</p>
+  <p><span class="italic-text">Director:</span>  {{ movieDetails.Director }}</p>
+  <p><span class="italic-text">Synopsis:</span> {{ movieDetails.Synopsis }}</p>
+  <p><span class="italic-text">Year:</span> {{ movieDetails.Year }}</p>
+  <p><span class="italic-text">Country:</span> {{ movieDetails.Country }}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

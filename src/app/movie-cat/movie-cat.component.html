@@ -1,7 +1,8 @@
 <!-- src/app/movie-card/movie-cat.component.html -->
-<h2 mat-dialog-title>{{ cat.Name }}</h2>
+<div class="dialog-title"><h2 mat-dialog-title class="h2">{{ cat.Name }}</h2></div>
+<div class="cat-img-container"><img [src]="cat.Img" alt="{{ cat.Name }}" class="cat-img"/></div>
 <mat-dialog-content>
-  <p>Color/Breed: {{ cat.ColorBreed }}</p>
+  <p><span class="italic-text">Color/Breed:</span> {{ cat.ColorBreed }}</p>
     <p>{{ cat.Bio }}</p>
 </mat-dialog-content>
 <mat-dialog-actions>

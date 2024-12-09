@@ -1,19 +1,66 @@
+$yellow: #dcc032;
+$dark: #000000;
+$light: #d4ceba;
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 
 html {
   @include mat.theme((
     color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      theme-type: dark,
+      primary: mat.$yellow-palette,
+      tertiary: mat.$yellow-palette,
     ),
-    typography: Roboto,
-    density: 0,
   ));
-}/* You can add global styles to this file, and also import other style files */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  font-family: "Playfair", serif;
+  background: linear-gradient(to bottom, $dark, $yellow); 
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100%; 
+  color: $light;
+}
+
+.logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 10px;
+}
+
+.logo-img {
+  height: 40px;
+  padding: 8px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color:$dark; 
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+  font-size: 19px;
+}
+
+main {
+  margin-top: 60px;
+}
+
+.dialog-title {
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  font-style: italic;
+}

@@ -18,6 +18,8 @@ import { MovieDetailsComponent } from '../movie-details/movie-details.component'
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  favoriteMovies: any[] = [];
+  currentUser: any = {};
   
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -27,13 +29,31 @@ export class MovieCardComponent {
 
 ngOnInit(): void {
   this.getMovies();
+  this.getUserData();
 }
 
+// Get all movies
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
+    this.movies = resp;
+  });
+}
+
+ // Get user data including favorite movies
+ getUserData(): void {
+  const username = localStorage.getItem('user');
+  if (username) {
+    this.fetchApiData.getUser(username).subscribe({
+      next: (res: any) => {
+        this.currentUser = res;
+        this.favoriteMovies = res.FavoriteMovies; // Store favorite movie IDs
+      },
+      error: (err: any) => {
+        console.error('Error fetching user data:', err);
+      },
     });
   }
+}
 
   // Open the dialogs
   openMovieDialog(movie: any): void {
@@ -54,17 +74,36 @@ getMovies(): void {
     });
   }
 
-  // Add movie to favorites
-  addToFavorites(movieId: string): void {
-      this.fetchApiData.addFavoriteMovie(movieId).subscribe({
-        next: (res: any) => {
-          console.log('Movie added to favorites:', res);
-        },
-        error: (err: any) => {
-          console.error('Error adding movie to favorites:', err);
-        }
-      });
-  }
+ // Add movie to favorites
+ addToFavorites(movieId: string): void {
+  this.fetchApiData.addFavoriteMovie(movieId).subscribe({
+    next: (res: any) => {
+      console.log('Movie added to favorites:', res);
+      this.getUserData(); // Refresh user data to update favorite movies
+    },
+    error: (err: any) => {
+      console.error('Error adding movie to favorites:', err);
+    },
+  });
+}
+
+// Remove movie from favorites
+removeFromFavorites(movieId: string): void {
+  this.fetchApiData.deleteFavoriteMovie(movieId).subscribe({
+    next: (res: any) => {
+      console.log('Movie removed from favorites:', res);
+      this.getUserData(); // Refresh user data to update favorite movies
+    },
+    error: (err: any) => {
+      console.error('Error removing movie from favorites:', err);
+    },
+  });
+}
+
+// Check if the movie is in the favorites list
+isFavorite(movieId: string): boolean {
+  return this.favoriteMovies.includes(movieId);
+}
 
     // Navigation
     userProfile(): void {

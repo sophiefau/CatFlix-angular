@@ -1,24 +1,30 @@
 <!-- src/app/movie-card/movie-card.component.html -->
-<div>
-  <nav>
-    <button mat-button color="primary" (click)="userProfile()">User Profile</button>
-    <button mat-button color="primary" (click)="logout()">Logout</button>
+<header>
+    <nav>
+      <div class="logo">
+      <img src="assets/catflix_logo.png" alt="CatFlix Logo" class="logo-img" />
+    </div>
+    <button mat-button (click)="userProfile()">User Profile</button>
+    <button mat-button (click)="logout()">Logout</button>
 </nav>
+</header>
 
-<div style="display: flex;">
-<mat-card *ngFor="let movie of movies">
-    <mat-card-header>
-      <mat-card-title>{{ movie.Title }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <img [src]="movie.Img" alt="{{ movie.Title }}" />
-      
-    <button mat-button color="primary" (click)="openMovieDialog(movie)">View Details</button>
-    <button mat-button color="accent" (click)="openCatDialog(movie.Cat)">About the cat</button>
-    <button mat-button color="warn" (click)="openGenreDialog(movie.Genre)">Genre: {{ movie.Genre.Name }}</button>
-    <button mat-raised-button (click)="addToFavorites(movie._id)">Add to Favorites</button>
-     
+<main>
+  <div class="card-container">
+<mat-card *ngFor="let movie of movies" class="movie-card">
+    <mat-card-content class="card-content">  
+      <img [src]="movie.Img" alt="{{ movie.Title }}" class="movie-img"/>
+    <button mat-button (click)="openMovieDialog(movie)">See details</button>
+    <button mat-button (click)="openCatDialog(movie.Cat)">About the Cat</button>
+    <button mat-button (click)="openGenreDialog(movie.Genre)">Genre</button>
     </mat-card-content>
+        
+    <button
+    mat-button
+    (click)="isFavorite(movie._id) ? removeFromFavorites(movie._id) : addToFavorites(movie._id)"
+  >
+    {{ isFavorite(movie._id) ? 'Remove from Favorites' : 'Add to Favorites' }}
+  </button>
 </mat-card>
 </div>
-</div>
+</main>

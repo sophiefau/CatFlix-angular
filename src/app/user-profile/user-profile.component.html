@@ -1,13 +1,20 @@
 <!-- src/app/user-profile/user-profile.component.html -->
-<div>
-<nav>
+  <header>
+    <nav>
+      <div class="logo">
+      <img src="assets/catflix_logo.png" alt="CatFlix Logo" class="logo-img" />
+    </div>
   <button mat-button color="primary" (click)="movieCard()">Movies List</button>
   <button mat-button color="primary" (click)="logout()">Logout</button>
 </nav>
-<div>
+</header>
+
+<main>
+  <div class="profile">
+  <div>
 <mat-card *ngIf="userData">
   <mat-card-header>
-    <mat-card-title>Your profile</mat-card-title>
+    <mat-card-title class="h2">Your profile</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <p>Username: {{ userData.Username }}</p>
@@ -17,17 +24,17 @@
     <button mat-raised-button color="accent" (click)="openEditDialog()">Edit Profile</button>
     
   </mat-card-content>
-  <mat-card-title>Favorite Movies</mat-card-title>
-  <mat-card *ngFor="let movie of this.favoriteMovies;">
-  <mat-card-header>
-    <mat-card-title>{{ movie.Title }}</mat-card-title>
-    <mat-card-content>
-      <img [src]="movie.Img" alt="{{ movie.Title }}" />
-    </mat-card-content>
-  </mat-card-header>
-  </mat-card>
-
-
 </mat-card>
 </div>
+
+<div class="favorites"> <mat-card-title class="h2">Favorite Movies</mat-card-title>
+<div class="favorites-container">
+  <mat-card *ngFor="let movie of this.favoriteMovies;" class="movie-card">
+    <mat-card-content>
+      <img [src]="movie.Img" alt="{{ movie.Title }}" class="movie-img"/>
+    </mat-card-content>
+  </mat-card>
 </div>
+</div>
+</div>
+</main>
