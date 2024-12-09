@@ -14,7 +14,8 @@
     <p>Email: {{ userData.Email }}</p>
     <p>Birthday: {{ userData.Birthday | date }}</p>
 
-    <!-- <button mat-raised-button (click)="openEditDialog()">Edit Profile</button> -->
+    <button mat-raised-button color="accent" (click)="openEditDialog()">Edit Profile</button>
+    
   </mat-card-content>
   <mat-card-title>Favorite Movies</mat-card-title>
   <mat-card *ngFor="let movie of this.favoriteMovies;">

@@ -47,12 +47,18 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  // // Edit profile
-  // openEditDialog(userData: any): void {
-  //   this.dialog.open(ProfileEditComponent, {
-  //     data: { userData }
-  //   });
-  // }
+// Edit profile
+openEditDialog(): void {
+  const dialogRef = this.dialog.open(ProfileEditComponent, {
+    data: { userData: this.userData },
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    if (result) {
+      this.getUser();
+    }
+  });
+}
 
         // Navigation
         movieCard(): void {

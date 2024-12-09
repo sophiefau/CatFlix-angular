@@ -14,7 +14,7 @@ export class MovieDetailsComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: { movie: any }) {}
 
   get movieDetails() {
-    return this.data.movie; 
+    return this.data.movie;
   }
 }
 

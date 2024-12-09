@@ -123,6 +123,7 @@ public userLogin(userDetails: any): Observable<any> {
   return this.http.patch(apiUrl + 'users/' + username, userData, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json',
     })
   }).pipe(catchError(this.handleError));
 }
