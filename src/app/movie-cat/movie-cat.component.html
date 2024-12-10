@@ -1,9 +1,11 @@
 <!-- src/app/movie-card/movie-cat.component.html -->
-<div class="dialog-title"><h2 mat-dialog-title class="h2">{{ cat.Name }}</h2></div>
-<div class="cat-img-container"><img [src]="cat.Img" alt="{{ cat.Name }}" class="cat-img"/></div>
+<div class="dialog-title">
+  <h2 mat-dialog-title class="h2">{{ cat.Name }}</h2>
+</div>
+<div class="cat-img-container"><img [src]="cat.Img" alt="{{ cat.Name }}" class="cat-img" /></div>
 <mat-dialog-content>
   <p><span class="italic-text">Color/Breed:</span> {{ cat.ColorBreed }}</p>
-    <p>{{ cat.Bio }}</p>
+  <p>{{ cat.Bio }}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

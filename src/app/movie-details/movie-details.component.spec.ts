@@ -1,3 +1,4 @@
+// src/app/movie-details/movie-details.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieDetailsComponent } from './movie-details.component';

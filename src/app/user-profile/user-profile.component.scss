@@ -1,27 +1,24 @@
+// src/app/user-profile/user-profile.component.scss
 .profile {
   width: 70%;
   margin: auto;
 }
-
 .h2 {
   font-size: 33px;
   font-style: italic;
   font-weight: bold;
 }
-
 .favorites-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
   padding: 16px;
 }
-
 .movie-card {
   padding: 8px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 .movie-img {
   max-width: 100%;
   height: auto;

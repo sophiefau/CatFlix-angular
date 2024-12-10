@@ -1,3 +1,4 @@
+// src/app/app.component.spec.ts
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
@@ -24,6 +25,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CatFlix-angular');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, CatFlix-angular'
+    );
   });
 });

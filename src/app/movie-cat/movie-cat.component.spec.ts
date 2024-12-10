@@ -1,3 +1,4 @@
+// src/app/movie-cat/movie-cat.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCatComponent } from './movie-cat.component';

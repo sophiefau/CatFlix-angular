@@ -1,3 +1,4 @@
+// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +24,10 @@ import { MovieCatComponent } from './movie-cat/movie-cat.component';
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
+/**
+ * Routes configuration for the application.
+ * @constant {Routes} appRoutes - An array defining the routes for the app.
+ */
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
@@ -30,6 +35,10 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
+/**
+ * NgModule decorator defines the metadata for the Angular module.
+ * @NgModule is used to configure the root module for the app.
+ */
 @NgModule({
   declarations: [
     AppComponent,

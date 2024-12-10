@@ -1,3 +1,4 @@
+// src/app/user-registration-form/user-registration-form.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserRegistrationFormComponent } from './user-registration-form.component';
@@ -8,9 +9,8 @@ describe('UserRegistrationFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserRegistrationFormComponent]
-    })
-    .compileComponents();
+      declarations: [UserRegistrationFormComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserRegistrationFormComponent);
     component = fixture.componentInstance;

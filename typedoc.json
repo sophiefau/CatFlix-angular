@@ -1,0 +1,8 @@
+{
+  "entryPoints": ["src/app/**/*.ts"],
+  "out": "docs/",
+  "exclude": ["**/node_modules/**", "**/*.spec.ts"],
+  "includeVersion": true,
+  "name": "CatFlix-Angular",
+  "theme": "default"
+}

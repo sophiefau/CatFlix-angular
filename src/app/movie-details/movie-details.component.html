@@ -1,8 +1,11 @@
 <!-- src/app/movie-card/movie-details.component.html -->
-<div class="dialog-title"><h2 mat-dialog-title class="h2">{{ movieDetails.Title }}</h2></div>
-<div class="movie-img-dialog-container"> <img [src]="movieDetails.Img" alt="{{ movie.Title }}" class="movie-img-dialog"/></div>
+<div class="dialog-title">
+  <h2 mat-dialog-title class="h2">{{ movieDetails.Title }}</h2>
+</div>
+<div class="movie-img-dialog-container"> <img [src]="movieDetails.Img" alt="{{ movie.Title }}"
+    class="movie-img-dialog" /></div>
 <mat-dialog-content>
-  <p><span class="italic-text">Director:</span>  {{ movieDetails.Director }}</p>
+  <p><span class="italic-text">Director:</span> {{ movieDetails.Director }}</p>
   <p><span class="italic-text">Synopsis:</span> {{ movieDetails.Synopsis }}</p>
   <p><span class="italic-text">Year:</span> {{ movieDetails.Year }}</p>
   <p><span class="italic-text">Country:</span> {{ movieDetails.Country }}</p>
