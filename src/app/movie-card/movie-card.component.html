@@ -1,30 +1,27 @@
 <!-- src/app/movie-card/movie-card.component.html -->
 <header>
-    <nav>
-      <div class="logo">
+  <nav>
+    <div class="logo">
       <img src="assets/catflix_logo.png" alt="CatFlix Logo" class="logo-img" />
     </div>
     <button mat-button (click)="userProfile()">User Profile</button>
     <button mat-button (click)="logout()">Logout</button>
-</nav>
+  </nav>
 </header>
 
 <main>
   <div class="card-container">
-<mat-card *ngFor="let movie of movies" class="movie-card">
-    <mat-card-content class="card-content">  
-      <img [src]="movie.Img" alt="{{ movie.Title }}" class="movie-img"/>
-    <button mat-button (click)="openMovieDialog(movie)">See details</button>
-    <button mat-button (click)="openCatDialog(movie.Cat)">About the Cat</button>
-    <button mat-button (click)="openGenreDialog(movie.Genre)">Genre</button>
-    </mat-card-content>
-        
-    <button
-    mat-button
-    (click)="isFavorite(movie._id) ? removeFromFavorites(movie._id) : addToFavorites(movie._id)"
-  >
-    {{ isFavorite(movie._id) ? 'Remove from Favorites' : 'Add to Favorites' }}
-  </button>
-</mat-card>
-</div>
+    <mat-card *ngFor="let movie of movies" class="movie-card">
+      <mat-card-content class="card-content">
+        <img [src]="movie.Img" alt="{{ movie.Title }}" class="movie-img" />
+        <button mat-button (click)="openMovieDialog(movie)">See details</button>
+        <button mat-button (click)="openCatDialog(movie.Cat)">About the Cat</button>
+        <button mat-button (click)="openGenreDialog(movie.Genre)">Genre</button>
+      </mat-card-content>
+
+      <button mat-button (click)="isFavorite(movie._id) ? removeFromFavorites(movie._id) : addToFavorites(movie._id)">
+        {{ isFavorite(movie._id) ? 'Remove from Favorites' : 'Add to Favorites' }}
+      </button>
+    </mat-card>
+  </div>
 </main>

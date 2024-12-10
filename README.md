@@ -57,3 +57,11 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Documentation
+
+If you want to serve the documentation locally for easier viewing during development, you can use a simple HTTP server like http-server:
+1. Install http-server: npm install -g http-server
+2. Then run the server in the docs folder: http-server docs
+3. Open http://localhost:8080 in your browser to see the documentation.
