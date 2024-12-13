@@ -17,11 +17,13 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Technologies
 
-- **Frontend Framework**: [Angular](https://angular.io/)
-- **UI Components**: [Angular Material](https://material.angular.io/)
-- **CSS Styling**: SCSS
-- **Backend API**: [Movie API](https://github.com/sophiefau/CatFlix)
-- **Deployment**: GitHub Pages
+- **[Angular](https://angular.io/)** → Frontend Framework
+- **[Angular Material](https://material.angular.io/)** → UI Components
+- **SCSS** → CSS Styling
+- **[Movie API](https://github.com/sophiefau/CatFlix)** → Backend API
+- **Typedoc** → Documentation
+- **Trello** → Project Managment
+
 
 ## Setup Instructions
 
